@@ -4,13 +4,16 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Curse extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // define association here
+      Curse.belongsTo(models.Categoty, {
+        foreignKey: 'category_id'
+      });
+      Curse.belongsTo(models.Person, {
+        foreignKey: 'teacher_id'
+      });
+      Curse.hasMany(models.Registration, {
+        foreignKey: 'curse_id'
+      });
     }
   }
   Curse.init({
