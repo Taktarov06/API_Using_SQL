@@ -1,4 +1,4 @@
-const dataSource = require('../models')
+const dataSource = require('../models');
 
 class Services {
     constructor(modelName) {
@@ -14,14 +14,14 @@ class Services {
     }
 
     async createRegister(createdDatas) {
-        return dataSource[this.model].create(createdDatas)
+        return dataSource[this.model].create(createdDatas);
     }
 
     async updatedRegister(updatedDatas, id) {
-        const listOfUptatedRegister = dataSource[this.model].update(updatedDatas, {
+        const listOfUpdatedRegister = await dataSource[this.model].update(updatedDatas, {
             where: { id: id }
         });
-        if (listOfUptatedRegister[0] === 0) {
+        if (listOfUpdatedRegister[0] === 0) {
             return false;
         }
         return true;
@@ -30,7 +30,6 @@ class Services {
     async deletedREgister(id) {
         return dataSource[this.model].destroy({ where: { id: id } });
     }
-
 }
 
 module.exports = Services;

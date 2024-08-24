@@ -6,8 +6,8 @@ const { FOREIGNKEYS } = require('sequelize/lib/query-types');
 module.exports = (sequelize, DataTypes) => {
   class Person extends Model {
     static associate(models) {
-      Person.hasMany(models.Curse, { foreingKey: 'teacher_id' });
-      Person.hasMany(models.Registration, { foreingKey: 'student_id' });
+      Person.hasMany(models.Curse, { foreignKey: 'teacher_id' });
+      Person.hasMany(models.Registration, { foreignKey: 'student_id' });
     }
   }
   Person.init({
