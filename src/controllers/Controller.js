@@ -7,8 +7,10 @@ class Controller {
         try {
             const registerList = await this.service.getAllRegister();
             return res.status(200).json(registerList);
-        } catch (error) {
-            console.log(error); // Adicionado para passar o erro para o middleware de erro
+        } catch (erro) {
+            return res.status(500).json({
+                erro: erro.message
+            }) // Adicionado para passar o erro para o middleware de erro
         }
     }
 
@@ -20,8 +22,10 @@ class Controller {
                 return res.status(404).json({ message: 'Registro não encontrado' });
             }
             return res.status(200).json(searchedId);
-        } catch (error) {
-            console.log(error); // Adicionado para passar o erro para o middleware de erro
+        } catch (erro) {
+            return res.status(500).json({
+                erro: erro.message
+            }) // Adicionado para passar o erro para o middleware de erro
         }
     }
 
@@ -30,8 +34,10 @@ class Controller {
         try {
             const registerCreated = await this.service.createRegister(createdDatas);
             return res.status(201).json(registerCreated);
-        } catch (error) {
-            console.log(error); // Adicionado para passar o erro para o middleware de erro
+        } catch (erro) {
+            return res.status(500).json({
+                erro: erro.message
+            }) // Adicionado para passar o erro para o middleware de erro
         }
     }
 
@@ -44,8 +50,10 @@ class Controller {
                 return res.status(400).json({ message: 'Registro não foi atualizado' });
             }
             return res.status(200).json({ message: 'Registro atualizado' });
-        } catch (error) {
-            console.log(error); // Adicionado para passar o erro para o middleware de erro
+        } catch (erro) {
+            return res.status(500).json({
+                erro: erro.message
+            }) // Adicionado para passar o erro para o middleware de erro
         }
     }
 
@@ -58,7 +66,9 @@ class Controller {
             }
             return res.status(200).json({ message: `Registro ${id} deletado` });
         } catch (error) {
-            console.log(error); // Adicionado para passar o erro para o middleware de erro
+            reterroes.status(500).json({
+                erro: erro.message
+            }) // Adicionado para passar o erro para o middleware de erro
         }
     }
 }
