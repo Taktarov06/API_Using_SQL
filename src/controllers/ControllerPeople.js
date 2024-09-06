@@ -17,7 +17,18 @@ class ControllerPeople extends Controller {
         } catch (erro) {
             return res.status(500).json({
                 erro: erro.message
-            }) 
+            })
+        }
+    }
+
+    async getAllPerson(req, res, next) {
+        try {
+            const listAllPeople = await personService.getRegisterScopeAll();
+            return res.status(200).json(listAllPeople);
+        } catch (erro) {
+            return res.status(500).json({
+                erro: erro.message
+            })
         }
     }
 }

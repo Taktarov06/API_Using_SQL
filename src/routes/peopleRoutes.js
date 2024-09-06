@@ -7,6 +7,7 @@ const registrationController = new ControllerRegistration();
 const router = Router();
 
 router.get('/people', (req, res) => personController.getAll(req, res));
+router.get('/people/all', (req, res) => personController.getAllPerson(req, res));
 router.get('/people/:id', (req, res) => personController.getById(req, res))
 router.post('/people', (req, res) => personController.create(req, res))
 router.put('/people/:id', (req, res) => personController.update(req, res));
